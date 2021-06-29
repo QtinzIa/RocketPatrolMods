@@ -120,7 +120,7 @@ class Play extends Phaser.Scene {
             return false;
         }
     }
-    /*shipExplode(ship) {
+    shipExplode(ship) {
         ship.alpha = 0;
         if (ship == this.ship01) {
             let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0, 0);
@@ -141,8 +141,8 @@ class Play extends Phaser.Scene {
             });
         }
         
-        this.p1Score += ship.points;
+        /*this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
-        this.sound.play('sfx_explosion');
-    }*/
+        this.sound.play('sfx_explosion');*/
+    }
 }
