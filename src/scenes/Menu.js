@@ -5,19 +5,25 @@ class Menu extends Phaser.Scene {
     preload() {
         // load audio
         this.load.audio('sfx_select', './assets/blip_select12.wav');
-        this.load.audio('sfx_explosion', './assets/explosion38.wav');
-        this.load.audio('sfx_rocket', './assets/rocket_shot.wav');
+        this.load.audio('sfx_explosion', './assets/die.mp3');
+        this.load.audio('sfx_rocket', './assets/character1.wav');
+        this.load.audio('sfx_rocket2', './assets/character2.m4a');
         this.load.image('grass', './assets/grass.png');
+        // load background music
+        this.load.audio('bgm', './assets/bgm.mp3');
     }
     create() {
-        this.add.text(20, 20, "Rocket Patrol Menu");
-        this.scene.start("playScene");
-        /*this.grass = this.add.tileSprite(0, 0, 640, 480, 'grass').setOrigin(0, 0);
         //this.add.text(20, 20, "Rocket Patrol Menu");
         //this.scene.start("playScene");
+        this.grass = this.add.tileSprite(0, 0, 800, 600, 'grass').setOrigin(0, 0);
+        this.music = this.sound.add('bgm', {
+            volume: 0.5,
+            loop: true
+        });
+        this.music.play();
         let menuConfig = {
             fontFamily: 'Impact',
-            fontSize: '40px',
+            fontSize: '52px',
             backgroundColor: '#FFD8DE',
             color: '#7FA8CF',
             align: 'right',
@@ -35,7 +41,7 @@ class Menu extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding + 10, 'Player2: Use (A)(D) to move & (F) to fire', menuConfig).setOrigin(0.5);
         menuConfig.backgroundColor = '#FFDBA7';
         menuConfig.color = '#AB594B';
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize * 2 + borderPadding * 2 + 20, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width/2, game.config.height/2 + borderUISize * 2 + borderPadding * 2 + 20, 'Press ← for 1 Player or → for 2 Players', menuConfig).setOrigin(0.5);
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         
@@ -60,6 +66,6 @@ class Menu extends Phaser.Scene {
             }
             this.sound.play('sfx_select');
             this.scene.start('playScene');
-        }*/
+        }
     }
 }
