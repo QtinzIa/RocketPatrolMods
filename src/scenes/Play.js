@@ -43,7 +43,7 @@ class Play extends Phaser.Scene {
             frames: this.anims.generateFrameNumbers('explosion', {start: 0, end: 9, first: 0}),
             frameRate: 30
         });
-        /*this.p1Score = 0;
+        this.p1Score = 0;
         // display score
         let scoreConfig = {
             fontFamily: 'Comic Sans MS',
@@ -65,26 +65,26 @@ class Play extends Phaser.Scene {
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
-        }, null, this);*/
+        }, null, this);
     }
     update() {
         // check key input for restart
-        /*if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
+        if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
             this.scene.restart();
         }
-        if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+        /*if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             this.scene.start("menuScene");
         }*/
         this.grass1.tilePositionX -= 2;
-        /*if (!this.gameOver) {*/
-        this.p1Rocket.update();
-        if (game.settings.players == 2) {
-            this.p2Rocket.update();
+        if (!this.gameOver) {
+            this.p1Rocket.update();
+            if (game.settings.players == 2) {
+                this.p2Rocket.update();
+            }
+            this.ship01.update();
+            this.ship02.update();
+            this.ship03.update();
         }
-        this.ship01.update();
-        this.ship02.update();
-        this.ship03.update();
-        //}
         // check collisions
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
             this.p1Rocket.reset();
@@ -141,8 +141,8 @@ class Play extends Phaser.Scene {
             });
         }
         
-        /*this.p1Score += ship.points;
+        this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score;
-        this.sound.play('sfx_explosion');*/
+        this.sound.play('sfx_explosion');
     }
 }
